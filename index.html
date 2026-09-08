@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUBYSSAM's SPACE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&display=swap');
+        
+        body {
+            font-family: 'Gowun Dodum', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            background-color: #fcf8f2;
+            color: #4a3b32;
+        }
+
+        .handwritten {
+            font-family: 'Nanum Pen Script', cursive;
+        }
+
+        /* 탐험 노트 테마 스타일 */
+        .notebook-card {
+            background-color: #fffaf0;
+            border: 2px dashed #d4bda8;
+            box-shadow: 4px 4px 0px rgba(212, 189, 168, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .notebook-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0px rgba(180, 150, 125, 0.6);
+        }
+
+        /* 공룡 게임 컨테이너 커스텀 스크롤바 방지 및 기본 설정 */
+        #gameContainer {
+            touch-action: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-8">
+
+    <!-- 홈페이지 상단 헤더 -->
+    <header class="w-full max-w-3xl text-center mb-8 pt-4">
+        <div class="inline-block bg-[#f0dcc8] px-4 py-1 rounded-full text-sm font-bold text-[#7c5a45] mb-2 shadow-sm border border-[#e2c4ac]">
+            ✨ 루비쌤의 탐험 기록장 ✨
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide text-[#5c4033] mb-2">
+            RUBYSSAM's SPACE
+        </h1>
+        <div class="w-24 h-1 bg-[#d4bda8] mx-auto rounded-full"></div>
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="w-full max-w-3xl flex flex-col gap-8 mb-12">
+
+        <!-- ABOUT ME 영역 -->
+        <section class="notebook-card rounded-2xl p-6 md:p-8 relative overflow-hidden">
+            <!-- 동화책 탐험 노트 장식 요소 -->
+            <div class="absolute -top-6 -right-6 w-20 h-20 bg-[#f7eedf] rounded-full opacity-50 pointer-events-none"></div>
+            
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">🧭</span>
+                <h2 class="text-xl md:text-2xl font-bold text-[#5c4033]">ABOUT ME</h2>
+            </div>
+
+            <!-- 자기소개 한 문장 -->
+            <p class="text-lg md:text-xl leading-relaxed text-[#5a483e] mb-6 font-medium bg-[#fcf5ec] p-4 rounded-xl border-l-4 border-[#b8977e]">
+                "이야기 속 단서를 추적하듯 일상 속에서 즐거움을 발견하고, 따뜻한 그림책과 요리로 아이들과 교감하는 탐험가이야."
+            </p>
+
+            <!-- 관심 키워드 카드 그리드 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- 키워드 카드 1: 요리 -->
+                <div class="bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] transition-all">
+                    <div class="text-4xl mb-2">🍳</div>
+                    <h3 class="font-bold text-[#5c4033] text-lg mb-1">요리</h3>
+                    <p class="text-sm text-[#7a6558]">오감으로 맛보고 즐기는 달콤하고 고소한 일상 레시피</p>
+                </div>
+
+                <!-- 키워드 카드 2: 그림책 -->
+                <div class="bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] transition-all">
+                    <div class="text-4xl mb-2">📚</div>
+                    <h3 class="font-bold text-[#5c4033] text-lg mb-1">그림책</h3>
+                    <p class="text-sm text-[#7a6558]">상상력을 자극하고 마음을 따뜻하게 적시는 이야기 속 세상</p>
+                </div>
+
+                <!-- 키워드 카드 3: 유아교육 -->
+                <div class="bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] transition-all">
+                    <div class="text-4xl mb-2">🌱</div>
+                    <h3 class="font-bold text-[#5c4033] text-lg mb-1">유아교육</h3>
+                    <p class="text-sm text-[#7a6558]">아이들의 눈높이에서 함께 웃고 배우는 소중한 발걸음</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MY FIRST PROJECT 영역 (기존 공룡 점프 게임) -->
+        <section class="notebook-card rounded-2xl p-6 md:p-8">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🦖</span>
+                    <h2 class="text-xl md:text-2xl font-bold text-[#5c4033]">MY FIRST PROJECT</h2>
+                </div>
+                <div class="text-sm md:text-base font-semibold bg-[#f0dcc8] px-4 py-1.5 rounded-xl shadow-sm border border-[#e2c4ac] text-[#5c4033]">
+                    점수: <span id="scoreDisplay" class="text-amber-700 font-mono font-bold">0</span> | 최고: <span id="highScoreDisplay" class="text-emerald-700 font-mono font-bold">0</span>
+                </div>
+            </div>
+
+            <!-- 게임 캔버스 영역 -->
+            <div class="relative w-full aspect-[2/1] bg-slate-900 rounded-2xl shadow-xl overflow-hidden border-2 border-slate-700 cursor-pointer" id="gameContainer">
+                
+                <!-- 배경 별/구름 효과 -->
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+                    <div class="absolute top-10 left-1/4 w-2 h-2 bg-white rounded-full"></div>
+                    <div class="absolute top-16 left-3/4 w-1.5 h-1.5 bg-white rounded-full"></div>
+                    <div class="absolute top-8 left-1/2 w-2 h-2 bg-white rounded-full"></div>
+                </div>
+
+                <!-- 바닥선 -->
+                <div class="absolute bottom-12 w-full h-1 bg-slate-600"></div>
+
+                <!-- 공룡 (왼쪽 끝에 위치, 오른쪽을 바라보도록 좌우 반전 적용) -->
+                <div id="dino" class="absolute bottom-12 left-6 text-4xl md:text-6xl transition-transform duration-75 flex items-end justify-center" style="width: 50px; height: 60px; transform: scaleX(-1);">
+                    🦖
+                </div>
+
+                <!-- 장애물 (선인장) -->
+                <div id="obstacle" class="absolute bottom-12 text-3xl md:text-5xl flex items-end justify-center" style="left: 100%; width: 40px; height: 50px;">
+                    🌵
+                </div>
+
+                <!-- 시작/게임오버 오버레이 화면 -->
+                <div id="screenOverlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 z-10">
+                    <h2 id="overlayTitle" class="text-3xl md:text-4xl font-extrabold mb-2 text-emerald-400">공룡 점프!</h2>
+                    <p id="overlayDesc" class="text-slate-300 text-sm md:text-base mb-6">화면을 터치하거나 아래 점프 버튼을 누르면 시작합니다.</p>
+                    <button id="startBtn" class="bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-bold px-8 py-3 rounded-2xl text-lg shadow-lg transition-all cursor-pointer">
+                        게임 시작 / 다시하기
+                    </button>
+                </div>
+            </div>
+
+            <!-- 태블릿 최적화 큰 점프 버튼 -->
+            <div class="w-full mt-4">
+                <button id="jumpBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:scale-98 text-white font-bold py-4 rounded-2xl text-xl shadow-md transition-all border-b-4 border-indigo-800 flex items-center justify-center gap-2 cursor-pointer">
+                    🚀 점프! (TAP / SPACE)
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="w-full max-w-3xl text-center text-xs text-[#8c7365] pb-4">
+        <p>© 2026 RUBYSSAM's SPACE. All rights reserved.</p>
+    </footer>
+
+    <!-- 게임 로직 스크립트 -->
+    <script>
+        const dino = document.getElementById('dino');
+        const obstacle = document.getElementById('obstacle');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const highScoreDisplay = document.getElementById('highScoreDisplay');
+        const screenOverlay = document.getElementById('screenOverlay');
+        const overlayTitle = document.getElementById('overlayTitle');
+        const overlayDesc = document.getElementById('overlayDesc');
+        const startBtn = document.getElementById('startBtn');
+        const jumpBtn = document.getElementById('jumpBtn');
+        const gameContainer = document.getElementById('gameContainer');
+
+        let isPlaying = false;
+        let score = 0;
+        let highScore = 0;
+        let scoreInterval = null;
+        let gameLoopInterval = null;
+
+        // 공룡 물리 변수 (bottom 기준 픽셀값 직접 관리)
+        let isJumping = false;
+        let dinoBottom = 48; // 기본 bottom: 12 (tailwind bottom-12는 대략 48px)
+        let velocityY = 0;
+        const gravity = 0.9;
+        const jumpPower = 16;
+        const groundLevel = 48; // 바닥 위치 고정
+
+        // 장애물 위치 변수
+        let obstacleX = 0;
+        let obstacleSpeed = 6;
+
+        function updateHighScore() {
+            if (score > highScore) {
+                highScore = score;
+                highScoreDisplay.textContent = highScore;
+            }
+        }
+
+        function startGame() {
+            if (isPlaying) return;
+            isPlaying = true;
+            score = 0;
+            scoreDisplay.textContent = score;
+            obstacleSpeed = 6;
+            
+            // 초기 위치 세팅
+            dinoBottom = groundLevel;
+            dino.style.bottom = dinoBottom + 'px';
+            
+            obstacleX = gameContainer.clientWidth + 50;
+            screenOverlay.classList.add('hidden');
+            
+            // 점수 증가 타이머
+            scoreInterval = setInterval(() => {
+                score++;
+                scoreDisplay.textContent = score;
+                if (score % 100 === 0) {
+                    obstacleSpeed += 0.8;
+                }
+            }, 100);
+
+            // 메인 게임 루프 시작
+            gameLoopInterval = requestAnimationFrame(gameLoop);
+        }
+
+        function jump() {
+            if (!isPlaying) {
+                startGame();
+                return;
+            }
+            if (!isJumping) {
+                isJumping = true;
+                velocityY = jumpPower;
+            }
+        }
+
+        function gameLoop() {
+            if (!isPlaying) return;
+
+            // 공룡 점프 물리 처리
+            if (isJumping) {
+                dinoBottom += velocityY;
+                velocityY -= gravity;
+
+                // 바닥에 착지했을 때
+                if (dinoBottom <= groundLevel) {
+                    dinoBottom = groundLevel;
+                    isJumping = false;
+                    velocityY = 0;
+                }
+                dino.style.bottom = dinoBottom + 'px';
+            }
+
+            // 장애물 이동 처리 (오른쪽에서 왼쪽으로 이동)
+            obstacleX -= obstacleSpeed;
+            if (obstacleX < -50) {
+                obstacleX = gameContainer.clientWidth + Math.random() * 200 + 100;
+            }
+            obstacle.style.left = obstacleX + 'px';
+
+            // 충돌 감지 (Hitbox 계산)
+            const dinoLeft = 24; 
+            const dinoRight = dinoLeft + 40;
+            const obstacleLeft = obstacleX;
+            const obstacleRight = obstacleX + 35;
+
+            // X축이 겹치고, 공룡의 높이가 장애물 높이(바닥 기준 40px 미만)일 때 충돌
+            const isColliding = (
+                obstacleLeft < dinoRight && 
+                obstacleRight > dinoLeft && 
+                dinoBottom < (groundLevel + 40)
+            );
+
+            if (isColliding) {
+                gameOver();
+                return;
+            }
+
+            gameLoopInterval = requestAnimationFrame(gameLoop);
+        }
+
+        function gameOver() {
+            isPlaying = false;
+            clearInterval(scoreInterval);
+            cancelAnimationFrame(gameLoopInterval);
+
+            updateHighScore();
+
+            overlayTitle.textContent = "게임 오버!";
+            overlayDesc.innerHTML = `최종 점수: <span class="text-amber-400 font-bold">${score}점</span><br>다시 도전하려면 버튼을 누르세요.`;
+            startBtn.textContent = "다시 시작하기";
+            screenOverlay.classList.remove('hidden');
+        }
+
+        // 이벤트 리스너 연결
+        startBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            startGame();
+        });
+
+        gameContainer.addEventListener('click', () => {
+            jump();
+        });
+
+        jumpBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            jump();
+        });
+
+        jumpBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            jump();
+        }, { passive: false });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                jump();
+            }
+        });
+    </script>
+</body>
+</html>
