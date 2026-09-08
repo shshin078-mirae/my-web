@@ -35,23 +35,32 @@
             box-shadow: 6px 6px 0px rgba(180, 150, 125, 0.6);
         }
 
-        /* 공룡 게임 컨테이너 커스텀 스크롤바 방지 및 기본 설정 */
+        /* 관심 키워드 카드 인터랙션 (호버 및 터치 시 커지는 효과) */
+        .interest-card {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.25s ease;
+        }
+
+        .interest-card:hover, .interest-card:active {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(92, 64, 51, 0.15);
+        }
+
+        /* 공룡 게임 컨테이너 커스텀 */
         #gameContainer {
             touch-action: none;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-8">
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-8 pt-10">
 
-    <!-- 홈페이지 상단 헤더 -->
-    <header class="w-full max-w-3xl text-center mb-8 pt-4">
-        <div class="inline-block bg-[#f0dcc8] px-4 py-1 rounded-full text-sm font-bold text-[#7c5a45] mb-2 shadow-sm border border-[#e2c4ac]">
-            ✨ 루비쌤의 탐험 기록장 ✨
+    <!-- 맨 상단 헤더 타이틀 영역 -->
+    <header class="w-full max-w-3xl text-center mb-8">
+        <div class="inline-block bg-[#f0dcc8] text-[#705241] px-4 py-1.5 rounded-full text-sm font-semibold mb-2 shadow-sm border border-[#e2c4ac]">
+            ✨ 루비쌤의 일상 ✨
         </div>
-        <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide text-[#5c4033] mb-2">
-            RUBYSSAM's SPACE
+        <h1 class="text-3xl md:text-5xl font-extrabold text-[#5c4033] tracking-tight">
+            RUBYSSAM'<span class="underline decoration-[#b8977e] decoration-4 underline-offset-4">s</span> SPACE
         </h1>
-        <div class="w-24 h-1 bg-[#d4bda8] mx-auto rounded-full"></div>
     </header>
 
     <!-- 메인 콘텐츠 영역 -->
@@ -59,7 +68,6 @@
 
         <!-- ABOUT ME 영역 -->
         <section class="notebook-card rounded-2xl p-6 md:p-8 relative overflow-hidden">
-            <!-- 동화책 탐험 노트 장식 요소 -->
             <div class="absolute -top-6 -right-6 w-20 h-20 bg-[#f7eedf] rounded-full opacity-50 pointer-events-none"></div>
             
             <div class="flex items-center gap-3 mb-4">
@@ -72,25 +80,25 @@
                 "이야기 속 단서를 추적하듯 일상 속에서 즐거움을 발견하고, 따뜻한 그림책과 요리로 아이들과 교감하는 탐험가이야."
             </p>
 
-            <!-- 관심 키워드 카드 그리드 -->
+            <!-- 관심 키워드 카드 그리드 (인터랙션 효과 추가) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 
                 <!-- 키워드 카드 1: 요리 -->
-                <div class="bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] transition-all">
+                <div class="interest-card bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] cursor-pointer">
                     <div class="text-4xl mb-2">🍳</div>
                     <h3 class="font-bold text-[#5c4033] text-lg mb-1">요리</h3>
                     <p class="text-sm text-[#7a6558]">오감으로 맛보고 즐기는 달콤하고 고소한 일상 레시피</p>
                 </div>
 
                 <!-- 키워드 카드 2: 그림책 -->
-                <div class="bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] transition-all">
+                <div class="interest-card bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] cursor-pointer">
                     <div class="text-4xl mb-2">📚</div>
                     <h3 class="font-bold text-[#5c4033] text-lg mb-1">그림책</h3>
                     <p class="text-sm text-[#7a6558]">상상력을 자극하고 마음을 따뜻하게 적시는 이야기 속 세상</p>
                 </div>
 
                 <!-- 키워드 카드 3: 유아교육 -->
-                <div class="bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] transition-all">
+                <div class="interest-card bg-white p-5 rounded-xl border border-[#e6d5c3] shadow-sm flex flex-col items-center text-center hover:bg-[#fff6ef] cursor-pointer">
                     <div class="text-4xl mb-2">🌱</div>
                     <h3 class="font-bold text-[#5c4033] text-lg mb-1">유아교육</h3>
                     <p class="text-sm text-[#7a6558]">아이들의 눈높이에서 함께 웃고 배우는 소중한 발걸음</p>
@@ -314,10 +322,7 @@
         }, { passive: false });
 
         window.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') {
-                e.preventDefault();
-                jump();
-            }
+            e.code === 'Space' && (e.preventDefault(), jump());
         });
     </script>
 </body>
